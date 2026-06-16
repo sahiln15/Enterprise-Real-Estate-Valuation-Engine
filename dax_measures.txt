@@ -1,0 +1,23 @@
+--------------------------------------------------------------------------------
+-- 1. BASELINE PORTFOLIO TOTAL
+--------------------------------------------------------------------------------
+-- Adds up the sale prices of all properties to calculate the total baseline value.
+Baseline Portfolio Value = 
+SUM('fact_properties'[sale_price])
+
+
+--------------------------------------------------------------------------------
+-- 2. AVERAGE PRICE PER SQUARE FOOT
+--------------------------------------------------------------------------------
+-- Calculates the average price per square foot across the entire property dataset.
+Avg Price Per SqFt = 
+AVERAGE('fact_properties'[price_per_sqft])
+
+
+--------------------------------------------------------------------------------
+-- 3. SIMULATED RENO PRICING VALUE
+--------------------------------------------------------------------------------
+-- Multiplies the baseline total by whatever percentage is selected on the slider.
+-- This handles the dynamic value updates when the user drags the slider bar.
+Simulated Portfolio Value = 
+[Baseline Portfolio Value] * (1 + [Renovation Premium Slider Value])
